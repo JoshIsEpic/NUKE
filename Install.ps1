@@ -2,6 +2,7 @@
 # Installs software used at CodeNinjas
 
 $ID = "your-center-id-here" #example: cn-tx-new-braunfels
+$user = (whoami).split("\")[1]
 
 $run = @(
 
@@ -64,8 +65,8 @@ function MCreator {
 #Install Roblox
 function Roblox {
     Write-Output "Trying to Install Roblox..."
-    Invoke-WebRequest "https://setup.rbxcdn.com/RobloxPlayerLauncher.exe" -o "RobloxInstaller.exe"
-    Start-Process "RobloxInstaller.exe"
+    Invoke-WebRequest "https://setup.rbxcdn.com/RobloxPlayerLauncher.exe" -o "C:\Users\$user\Downloads\RobloxInstaller.exe"
+    Start-Process "C:\Users\$user\Downloads\RobloxInstaller.exe"
 }
 
 #Install Blender
@@ -87,20 +88,20 @@ function SpikePrime {
 #Link Dojo to Desktop
 function LnkDojo {
     $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut("C:\Users\$env:USERNAME\Desktop\Dojo.lnk")
+    $Shortcut = $WshShell.CreateShortcut("C:\Users\$user\Desktop\Dojo.lnk")
     $Shortcut.TargetPath = "https://dojo.code.ninja/welcome/$ID/"
-    Invoke-WebRequest "https://cdn.discordapp.com/attachments/1126640370692919327/1139283438281687171/dojo.ico" -o "C:\Users\$env:USERNAME\Documents\dojo.ico"
-    $shortcut.IconLocation = "C:\Users\$env:USERNAME\Documents\dojo.ico"
+    Invoke-WebRequest "https://cdn.discordapp.com/attachments/1126640370692919327/1139283438281687171/dojo.ico" -o "C:\Users\$user\Documents\dojo.ico"
+    $shortcut.IconLocation = "C:\Users\$user\Documents\dojo.ico"
     $Shortcut.Save()
 }
 
 #Link Impact to Desktop
 function LnkImpact {
     $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut("C:\Users\$env:USERNAME\Desktop\Impact.lnk")
+    $Shortcut = $WshShell.CreateShortcut("C:\Users\$user\Desktop\Impact.lnk")
     $Shortcut.TargetPath = "https://impact.codeninjas.com/login/"
-    Invoke-WebRequest "https://cdn.discordapp.com/attachments/1126640370692919327/1139283438600466624/impact.ico" -o "C:\Users\$env:USERNAME\Documents\impact.ico"
-    $shortcut.IconLocation = "C:\Users\$env:USERNAME\Documents\impact.ico"
+    Invoke-WebRequest "https://cdn.discordapp.com/attachments/1126640370692919327/1139283438600466624/impact.ico" -o "C:\Users\$user\Documents\impact.ico"
+    $shortcut.IconLocation = "C:\Users\$user\Documents\impact.ico"
     $Shortcut.Save()
 }
 
